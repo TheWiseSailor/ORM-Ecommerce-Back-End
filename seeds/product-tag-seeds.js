@@ -1,4 +1,4 @@
-const { ProductTag } = require('../models');
+const { ProductTag } = require("../models");
 
 const productTagData = [
   {
@@ -50,7 +50,7 @@ const productTagData = [
     tag_id: 3,
   },
 ];
-
-const seedProductTags = () => ProductTag.bulkCreate(productTagData);
-
+const seedProductTags = async () => {
+  await ProductTag.bulkCreate(productTagData);
+};
 module.exports = seedProductTags;

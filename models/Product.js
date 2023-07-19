@@ -32,7 +32,7 @@ Product.init(
       allowNull: false,
       defaultValue: 10,
       validate: {
-        isNumeric: true,
+        isInt: true,
       },
     },
     category_id: {
@@ -42,13 +42,6 @@ Product.init(
         key: "id",
       },
     },
-  },
-  {
-    sequelize,
-    timestamps: false,
-    freezeTableName: true,
-    underscored: true,
-    modelName: "product",
   },
   {
     sequelize,
