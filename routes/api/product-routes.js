@@ -20,30 +20,6 @@ router.get("/", async (req, res) => {
       ],
     });
 
-    // const formattedProducts = products.map((product) => {
-    //   return {
-    //     id: product.id,
-    //     product_name: product.product_name,
-    //     price: product.price,
-    //     stock: product.stock,
-    //     category_id: product.category_id,
-    //     category: {
-    //       id: product.category.id,
-    //       category_name: product.category.category_name,
-    //     },
-    //     tags: product.tags.map((tag) => {
-    //       return {
-    //         id: tag.id,
-    //         tag_name: tag.tag_name,
-    //         product_tag: {
-    //           id: tag.product_tag.id,
-    //           product_id: tag.product_tag.product_id,
-    //           tag_id: tag.product_tag.tag_id,
-    //         },
-    //       };
-    //     }),
-    //   };
-    // });
     res.json(products);
   } catch (err) {
     res.status(500).json(err);
@@ -69,28 +45,7 @@ router.get("/:id", async (req, res) => {
       res.status(404).json({ message: "Product not found" });
       return;
     }
-    // const formattedProduct = {
-    //   id: product.id,
-    //   product_name: product.product_name,
-    //   price: product.price,
-    //   stock: product.stock,
-    //   category_id: product.category_id,
-    //   category: {
-    //     id: product.category.id,
-    //     category_name: product.category.category_name,
-    //   },
-    //   tags: product.tags.map((tag) => {
-    //     return {
-    //       id: tag.id,
-    //       tag_name: tag.tag_name,
-    //       product_tag: {
-    //         id: tag.product_tag.id,
-    //         product_id: tag.product_tag.product_id,
-    //         tag_id: tag.product_tag.tag_id,
-    //       },
-    //     };
-    //  }),
-    //};
+
     res.json(product);
   } catch (err) {
     res.status(500).json(err);
