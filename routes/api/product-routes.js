@@ -56,20 +56,17 @@ router.get("/:id", async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     const newProduct = await Product.create(req.body);
-
-    if (req.body.tagIds && req.body.tagIds.length) {
-      const productTagIdArr = req.body.tagIds.map((tag_id) => {
-        return {
-          product_id: newProduct.id,
-          tag_id,
-        };
-      });
-      await ProductTag.bulkCreate(productTagIdArr);
+    if (req.body.tagIds && req.body.tagIds.length > 0) {
+      const productTagIds = req.body.tagIds.map((tag_id) => ({
+        product_id: newProduct.id,
+        tag_id,
+      }));
+      await ProductTag.bulkCreate(productTagIds);
     }
-
     res.status(201).json(newProduct);
   } catch (err) {
-    res.status(400).json(err);
+    console.log(err);
+    res.status(400).json({ message: "Creation failed", error: err });
   }
 });
 
