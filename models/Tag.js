@@ -12,14 +12,13 @@ Tag.init(
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
-      field: "id",
     },
     tag_name: {
       type: DataTypes.STRING,
       allowNull: false,
-      field: "tag_name",
     },
   },
+
   {
     sequelize,
     timestamps: false,
