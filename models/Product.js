@@ -1,32 +1,37 @@
-const { DataTypes } = require("sequelize");
+// import important parts of sequelize library
+const { Model, DataTypes } = require("sequelize");
+// import our database connection from config.js
+const sequelize = require("../config/connection");
 
-module.exports = (sequelize) => {
-  const Product = sequelize.define(
-    "product",
-    {
-      id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        primaryKey: true,
-        autoIncrement: true,
-      },
-      product_name: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      price: {
-        type: DataTypes.DECIMAL(10, 2),
-        allowNull: false,
-        validate: {
-          isDecimal: true,
-        },
+// Initialize Product model (table) by extending off Sequelize's Model class
+class Product extends Model {}
+
+// set up fields and rules for Product model
+Product.init(
+  {
+    // define columns
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
+    },
+    product_name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    price: {
+      type: DataTypes.DECIMAL,
+      allowNull: false,
+      validate: {
+        isDecimal: true,
       },
       stock: {
         type: DataTypes.INTEGER,
         allowNull: false,
         defaultValue: 10,
         validate: {
-          isInt: true,
+          isNumeric: true,
         },
       },
       category_id: {
@@ -34,16 +39,23 @@ module.exports = (sequelize) => {
         references: {
           model: "category",
           key: "id",
+          references: {
+            model: "category",
+            key: "id",
+            onDelete: "CASCADE",
+            onUpdate: "CASCADE",
+          },
         },
       },
     },
-    {
-      timestamps: false,
-      freezeTableName: true,
-      underscored: true,
-      modelName: "product",
-    }
-  );
+  },
+  {
+    sequelize,
+    timestamps: false,
+    freezeTableName: true,
+    underscored: true,
+    modelName: "product",
+  }
+);
 
-  return Product;
-};
+module.exports = Product;
