@@ -15,7 +15,7 @@ router.get("/", async (req, res) => {
     });
     res.json(categories);
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json({ message: "not found!" });
   }
 });
 
@@ -35,7 +35,7 @@ router.get("/:id", async (req, res) => {
     }
     res.json(category);
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json({ message: "not found!" });
   }
 });
 
@@ -45,7 +45,7 @@ router.post("/", async (req, res) => {
     const newCategory = await Category.create(req.body);
     res.status(201).json(newCategory);
   } catch (err) {
-    res.status(400).json(err);
+    res.status(400).json({ message: "creation failed" });
   }
 });
 
@@ -59,7 +59,7 @@ router.put("/:id", async (req, res) => {
     });
     res.json(updatedCategory);
   } catch (err) {
-    res.status(400).json(err);
+    res.status(400).json({ message: "update failed" });
   }
 });
 
