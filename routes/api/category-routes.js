@@ -62,13 +62,12 @@ router.put("/:id", async (req, res) => {
     res.status(400).json({ message: "update failed" });
   }
 });
-
 router.delete("/:id", async (req, res) => {
   // delete a category by its `id` value
   try {
     const deletedCategory = await Category.destroy({
       where: {
-        category_id: req.params.id,
+        id: req.params.id,
       },
     });
     res.json(deletedCategory);
@@ -76,5 +75,4 @@ router.delete("/:id", async (req, res) => {
     res.status(500).json(err);
   }
 });
-
 module.exports = router;
