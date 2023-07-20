@@ -33,8 +33,6 @@ const productData = [
   },
 ];
 
-const seedProducts = async () => {
-  await Product.bulkCreate(productData);
-};
+const seedProducts = () => Product.bulkCreate(productData);
 
 module.exports = seedProducts;
