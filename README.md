@@ -67,8 +67,10 @@ To install and run the , follow these steps: <br>
 You may contact me by rudasilljay@gmail.com
 
 ## Demo <a name="Demo"></a>
+[Untitled_ Jul 20 2023 9_47 PM.webm](https://github.com/TheWiseSailor/ORM-Ecommerce-Back-End/assets/68026214/4027de64-989e-48ea-9d17-cebd182463d5) 
 
 ## Demo Drive
+https://drive.google.com/file/d/1-7oAyGwLABI0Xom-XMOwHRXpDknNxI8n/view 
 
 ## Repository <a name="repository"></a>
 
